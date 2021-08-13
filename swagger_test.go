@@ -1,10 +1,10 @@
-package echoSwagger
+package echo_swagger
 
 import (
+	"github.com/secoba/echo"
 	"net/http/httptest"
 	"testing"
 
-	"github.com/secoba/echo"
 	"github.com/stretchr/testify/assert"
 	_ "github.com/swaggo/gin-swagger/example/basic/docs"
 )

@@ -1,11 +1,11 @@
-package echoSwagger
+package echo_swagger
 
 import (
+	"github.com/secoba/echo"
 	"html/template"
 	"net/http"
 	"regexp"
 
-	"github.com/secoba/echo"
 	"github.com/swaggo/files"
 	"github.com/swaggo/swag"
 )
@@ -27,7 +27,7 @@ func URL(url string) func(c *Config) {
 var WrapHandler = EchoWrapHandler()
 
 // EchoWrapHandler wraps `http.Handler` into `echo.HandlerFunc`.
-func EchoWrapHandler(confs ...func(c *Config)) echo.HandlerFunc {
+func EchoWrapHandler(confs ...func(c *Config)) echo.HandlerFunc /*echo.HandlerFunc*/ {
 
 	handler := swaggerFiles.Handler
 
@@ -52,7 +52,6 @@ func EchoWrapHandler(confs ...func(c *Config)) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		var matches []string
 		if matches = re.FindStringSubmatch(c.Request().RequestURI); len(matches) != 3 {
-
 			return c.String(http.StatusNotFound, "404 page not found")
 		}
 		path := matches[2]
